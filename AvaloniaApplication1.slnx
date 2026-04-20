@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="AvaloniaApplication1/AvaloniaApplication1.csproj" />
+  <Project Path="PractWork2/PractWork2.csproj" />
+  <Project Path="PractWork3/PractWork3.csproj" />
 </Solution>

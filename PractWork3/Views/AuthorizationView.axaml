@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:PractWork3.ViewModels"
+             x:DataType="viewmodels:AuthorizationViewModel"
+             x:Class="PractWork3.Views.AuthorizationView">
+
+    <StackPanel Spacing="10" Margin="20">
+        <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold"/>
+        <TextBox Watermark="Логин"/>
+        <TextBox Watermark="Пароль" PasswordChar="*"/>
+        <Button Content="Войти" HorizontalAlignment="Center"/>
+    </StackPanel>
+</UserControl>

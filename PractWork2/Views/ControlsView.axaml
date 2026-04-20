@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:PractWork2.ViewModels"
+             x:Class="PractWork2.Views.ControlsView"
+             x:DataType="viewmodels:ControlsViewModel">
+  
+    <ScrollViewer>
+        <StackPanel Spacing="15" Margin="20">
+            
+            <!-- 5.2 TextBlock -->
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="10">
+                <TextBlock>
+                    <Span FontSize="20" Background="LightYellow">
+                        <Run Text="Первый" Foreground="Red"/>
+                        <Run Text=" Второй" Foreground="Blue"/>
+                    </Span>
+                    <LineBreak/>
+                    <Run Text="Третий" Foreground="Green"/>
+                    <LineBreak/>
+                    <Run Text="Четвертый" Foreground="Purple"/>
+                    <LineBreak/>
+                    <Bold>Жирный</Bold>
+                    <Run Text=" "/>
+                    <Italic>Курсив</Italic>
+                    <Run Text=" "/>
+                    <Underline>Подчеркнутый</Underline>
+                    <LineBreak/>
+                    <InlineUIContainer>
+                        <Image Width="32" 
+                               Height="32" 
+                               VerticalAlignment="Top"
+                               Source="/Assets/avalonia-logo.ico"/>
+                    </InlineUIContainer>
+                    <LineBreak/>
+                    <InlineUIContainer>
+                        <Button Content="Кнопка"/>
+                    </InlineUIContainer>
+                </TextBlock>
+            </Border>
+
+            <!-- 5.3 TextBox -->
+            <StackPanel Spacing="10" Width="300">
+                <TextBox Watermark="Логин"/>
+                <TextBox Watermark="Пароль" PasswordChar="*"/>
+                <TextBox Watermark="Email" TextInputOptions.ContentType="Email"/>
+                <TextBox Watermark="Код" TextInputOptions.ContentType="Number"/>
+            </StackPanel>
+
+            <!-- 5.4 CheckBox -->
+            <CheckBox Content="CheckBox"/>
+
+            <!-- 5.5 RadioButton -->
+            <StackPanel>
+                <RadioButton Content="Группа1-1" GroupName="G1"/>
+                <RadioButton Content="Группа1-2" GroupName="G1"/>
+                <RadioButton Content="Группа2-1" GroupName="G2"/>
+                <RadioButton Content="Группа2-2" GroupName="G2"/>
+            </StackPanel>
+
+            <!-- 5.6 CalendarDatePicker -->
+            <StackPanel Spacing="5">
+                <CalendarDatePicker SelectedDate="{Binding SelectedDate}"/>
+                <TextBlock Text="{Binding Age, StringFormat='Возраст: {0}'}"/>
+            </StackPanel>
+
+            <!-- 5.7 ComboBox -->
+            <StackPanel Spacing="5">
+                <ComboBox ItemsSource="{Binding Languages}" 
+                          SelectedItem="{Binding SelectedLanguage}"/>
+                <TextBlock Text="{Binding SelectedLanguage}"/>
+            </StackPanel>
+
+            <!-- 5.8 Slider -->
+            <StackPanel Spacing="5">
+                <Slider Value="{Binding Opacity}"/>
+                <Rectangle Fill="Blue" Height="50" Opacity="{Binding Opacity}"/>
+            </StackPanel>
+
+            <!-- 5.9 ToggleSwitch -->
+            <ToggleSwitch OnContent="Включено" OffContent="Выключено"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

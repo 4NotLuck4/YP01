@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PractWork3.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="PractWork3.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="PractWork3" Width="400" Height="300">
+    
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+            <Button Content="Авторизация" Command="{Binding NavigateToAuthorizationCommand}"/>
+            <Button Content="Регистрация" Margin="10,0,0,0" Command="{Binding NavigateToRegistrationCommand}"/>
+            <Button Content="Назад" Margin="10,0,0,0" Command="{Binding GoBackCommand}"/>
+        </StackPanel>
+        
+        <ContentControl Content="{Binding CurrentPage}"/>
+    </DockPanel>
+</Window>
