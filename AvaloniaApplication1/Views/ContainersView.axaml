@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+             x:Class="AvaloniaApplication1.ContainersView">
+    <ScrollViewer>
+		<StackPanel Spacing="20" Margin="10">
+			
+            <DockPanel Width="400" Height="400" Background="LightGray">
+				<Rectangle Fill="Red" DockPanel.Dock="Top" Height="100"/>
+				<Rectangle Fill="Blue" DockPanel.Dock="Left" Width="100"/>
+				<Rectangle Fill="Green" DockPanel.Dock="Bottom" Height="100"/>
+				<Rectangle Fill="Yellow" DockPanel.Dock="Right" Width="100"/>
+				<Rectangle Fill="Purple"/>
+            </DockPanel>
+
+            <Grid Width="400" Height="200" 
+				  ColumnDefinitions="*,2*" 
+				  RowDefinitions="Auto,100">
+				<Rectangle Fill="Orange" Grid.Row="0" Grid.Column="0" Height="50" />
+                <Rectangle Fill="Cyan" Grid.Row="0" Grid.Column="1" Height="50" />
+                <Rectangle Fill="Magenta" Grid.Row="1" Grid.Column="0" />
+                <Rectangle Fill="Brown" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Размер - 1" FontSize="12"/>
+				<TextBlock Text="Размер - 2" FontSize="20"/>
+				<TextBlock Text="Размер - 3" FontSize="28"/>
+				<TextBlock Text="Размер - 4" FontSize="36"/>
+            </StackPanel>
+
+			<StackPanel Orientation="Vertical" Spacing="5">
+				<TextBlock Text="Размер - 1" FontSize="12"/>
+				<TextBlock Text="Размер - 2" FontSize="20"/>
+				<TextBlock Text="Размер - 3" FontSize="28"/>
+				<TextBlock Text="Размер - 4" FontSize="36"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
