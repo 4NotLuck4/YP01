@@ -1,11 +1,44 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:converters="using:PractWork3.Converters"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:PractWork3.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="PractWork3.Views.MainWindow"
         x:DataType="vm:MainViewModel"
-        Title="PractWork3" Width="400" Height="300">
+         Width="600" Height="500">
+    
+    <Window.Resources>
+        <converters:CelsiusToFahrenheitConverter x:Key="CelsiusConverter"/>
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="TextBox#Title">
+            <Setter Property="Background" Value="LightYellow"/>
+        </Style>
+        <Style Selector="StackPanel Button">
+            <Setter Property="Background" Value="LightGreen"/>
+        </Style>
+        <Style Selector="Border.highlight TextBlock">
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Orange"/>
+        </Style>
+        <Style Selector="TextBlock.income">
+            <Setter Property="Foreground" Value="Green"/>
+        </Style>
+        <Style Selector="TextBlock.expense">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <Style Selector="TextBlock[FontSize=16]">
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+    </Window.Styles>
     
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
@@ -14,6 +47,29 @@
             <Button Content="Назад" Margin="10,0,0,0" Command="{Binding GoBackCommand}"/>
         </StackPanel>
         
-        <ContentControl Content="{Binding CurrentPage}"/>
+        <ScrollViewer Margin="10">
+            <StackPanel Spacing="10">
+                
+                <TextBlock Text="{Binding ApiKey, StringFormat='API Key: {0}'}"/>
+                
+                <StackPanel>
+                    <TextBlock Text="Конвертер температур"/>
+                    <TextBox Text="{Binding Celsius}" Width="100"/>
+                    <TextBlock Text="{Binding Celsius, Converter={StaticResource CelsiusConverter}, StringFormat='F: {0:F1}'}"/>
+                </StackPanel>
+                
+                <TextBox Name="Title" Text="Title TextBox" Width="200"/>
+                
+                <Border Classes="highlight" BorderBrush="Gray" BorderThickness="1" Padding="5">
+                    <TextBlock Text="Курсив через highlight"/>
+                </Border>
+                
+                <TextBlock Text="Синий текст (FontSize=16)" FontSize="16"/>
+                <TextBlock Text="Обычный текст (FontSize=14)" FontSize="14"/>
+                
+                <ContentControl Content="{Binding CurrentPage}"/>
+                
+            </StackPanel>
+        </ScrollViewer>
     </DockPanel>
 </Window>

@@ -2,4 +2,7 @@
   <Project Path="AvaloniaApplication1/AvaloniaApplication1.csproj" />
   <Project Path="PractWork2/PractWork2.csproj" />
   <Project Path="PractWork3/PractWork3.csproj" />
+  <Project Path="PractWork4/PractWork4.csproj" Id="0e38ee08-d1de-4936-8cd7-62010beb77b4" />
+  <Project Path="PractWork6_Material/PractWork6_Material.csproj" Id="83071474-2d09-4e51-9458-b67e1dae1cc4" />
+  <Project Path="PractWork6_Styles/PractWork6_Styles.csproj" Id="7b8f7899-7674-4e18-97c0-54ca48a5bed0" />
 </Solution>

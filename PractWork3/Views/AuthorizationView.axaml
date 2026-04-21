@@ -8,8 +8,8 @@
 
     <StackPanel Spacing="10" Margin="20">
         <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold"/>
-        <TextBox Watermark="Логин"/>
-        <TextBox Watermark="Пароль" PasswordChar="*"/>
+        <TextBox Text="{Binding Login}" PlaceholderText="Логин"/>
+        <TextBox PlaceholderText="Пароль" PasswordChar="*"/>
         <Button Content="Войти" HorizontalAlignment="Center"/>
     </StackPanel>
 </UserControl>

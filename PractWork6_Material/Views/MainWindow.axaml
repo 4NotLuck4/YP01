@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PractWork6_Material.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="PractWork6_Material.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:a="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+        Title="ПР6 Material Avalonia" Width="500" Height="500">
+    
+    <ScrollViewer>
+        <StackPanel Spacing="15" Margin="20">
+            
+            <TextBlock Text="Material Avalonia" FontSize="18" FontWeight="Bold"/>
+            
+            <!-- 5.6.4 -->
+            <TextBlock Text="TextBlock"/>
+            <TextBox Text="TextBox"/>
+            
+            <!-- 5.6.7 Outlined TextBox -->
+            <TextBox Text="Outlined TextBox" a:TextFieldAssist.Variant="Outlined"/>
+            
+            <Button Content="Button"/>
+            <CheckBox Content="CheckBox"/>
+            
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <RadioButton Content="Radio 1" GroupName="G1"/>
+                <RadioButton Content="Radio 2" GroupName="G1"/>
+            </StackPanel>
+            
+            <DatePicker/>
+            
+            <ComboBox>
+                <ComboBoxItem Content="ComboBox Item 1"/>
+                <ComboBoxItem Content="ComboBox Item 2"/>
+            </ComboBox>
+            
+            <!-- 5.6.7 Outlined ComboBox -->
+            <ComboBox a:ComboBoxAssist.Variant="Outlined">
+                <ComboBoxItem Content="Outlined Item 1"/>
+                <ComboBoxItem Content="Outlined Item 2"/>
+            </ComboBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Window>

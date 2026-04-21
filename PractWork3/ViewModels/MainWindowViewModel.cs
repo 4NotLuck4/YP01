@@ -1,38 +1,53 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PractWork3.Services;
+using System;
 
 namespace PractWork3.ViewModels
 {
     public partial class MainViewModel : ViewModelBase
     {
+        private readonly NavigationService _navigation; 
+
         [ObservableProperty]
-        private ViewModelBase? _currentPage;
+        private string? _apiKey;
 
-        public NavigationService NavigationService { get; } = new();
+        [ObservableProperty]
+        private double _celsius = 0;
 
-        public MainViewModel()
+        public MainViewModel(NavigationService navigation)
         {
-            NavigationService.NavigationChanged += () => CurrentPage = NavigationService.CurrentPage;
-            NavigationService.NavigateTo(new AuthorizationViewModel());
+            _navigation = navigation;
+            _navigation.PropertyChanged += OnNavigationChanged;
+            _navigation.NavigateTo<AuthorizationViewModel>();
+
+            var key = App.Configuration?.GetSection("ApiKeys")["SomeApi"];
+            ApiKey = key;
         }
+
+        private void OnNavigationChanged(object? sender, EventArgs e)
+        {
+            OnPropertyChanged(nameof(CurrentPage));
+        }
+
+        public ViewModelBase? CurrentPage => _navigation.Current;
 
         [RelayCommand]
         private void NavigateToAuthorization()
         {
-            NavigationService.NavigateTo(new AuthorizationViewModel());
+            _navigation.NavigateTo<AuthorizationViewModel>(vm => vm.Login = "user");
         }
 
         [RelayCommand]
         private void NavigateToRegistration()
         {
-            NavigationService.NavigateTo(new RegistrationViewModel());
+            _navigation.NavigateTo<RegistrationViewModel>();
         }
 
         [RelayCommand]
         private void GoBack()
         {
-            NavigationService.GoBack();
+            _navigation.GoBack();
         }
     }
 }

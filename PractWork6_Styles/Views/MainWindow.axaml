@@ -1,0 +1,124 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PractWork6_Styles.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="PractWork6_Styles.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="ПР6 Стили" Width="550" Height="500">
+    
+    <Window.Styles>
+        <!-- 5.1.2 -->
+        <Style Selector="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+        <!-- 5.1.3 -->
+        <Style Selector="TextBox#Title">
+            <Setter Property="Background" Value="LightYellow"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        
+        <!-- 5.1.4 -->
+        <Style Selector="StackPanel Button">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
+        
+        <!-- 5.1.5 -->
+        <Style Selector="Border.highlight TextBlock">
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
+        
+        <!-- 5.2.1 -->
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Orange"/>
+        </Style>
+        
+        <!-- 5.2.2 -->
+        <Style Selector="TextBox:disabled /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        
+        <!-- 5.2.3 -->
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="LightCyan"/>
+        </Style>
+        
+        <!-- 5.2.4 -->
+        <Style Selector="ListBoxItem:nth-child(even)">
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+        
+        <!-- 5.3.1 -->
+        <Style Selector="TextBlock.income">
+            <Setter Property="Foreground" Value="Green"/>
+        </Style>
+        <Style Selector="TextBlock.expense">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        
+        <!-- 5.4.1 -->
+        <Style Selector=":is(Button)">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        
+        <!-- 5.5.1 -->
+        <Style Selector="TextBlock[FontSize=16]">
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+    </Window.Styles>
+    
+    <ScrollViewer>
+        <StackPanel Spacing="15" Margin="20">
+            
+            <!-- 5.1.3 -->
+            <TextBlock Text="5.1.3 TextBox с Name='Title'" FontWeight="Bold"/>
+            <TextBox Name="Title" Text="Title TextBox" Width="200"/>
+            
+            <!-- 5.1.4 -->
+            <TextBlock Text="5.1.4 Кнопки в StackPanel" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Кнопка 1"/>
+                <Button Content="Кнопка 2"/>
+            </StackPanel>
+            
+            <!-- 5.1.5 -->
+            <TextBlock Text="5.1.5 Border с классом highlight" FontWeight="Bold"/>
+            <Border Classes="highlight" BorderBrush="Gray" BorderThickness="1" Padding="5">
+                <TextBlock Text="Курсив через класс highlight"/>
+            </Border>
+            
+            <!-- 5.2.2 -->
+            <TextBlock Text="5.2.2 Disabled TextBox" FontWeight="Bold"/>
+            <TextBox Text="Disabled TextBox" IsEnabled="False" Width="200"/>
+            
+            <!-- 5.3 -->
+            <TextBlock Text="5.3 Список операций (зелёный - доход, красный - расход)" FontWeight="Bold"/>
+            <ListBox ItemsSource="{Binding Operations}" Height="150">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="{Binding Description}" Width="100"/>
+                            <TextBlock Text="{Binding Amount, StringFormat='{0:C}'}" 
+                                       Classes.income="{Binding IsIncome}"
+                                       Classes.expense="{Binding !IsIncome}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <!-- 5.5.1 -->
+            <TextBlock Text="5.5.1 TextBlock с FontSize=16 (синий) и FontSize=14 (обычный)" FontWeight="Bold"/>
+            <TextBlock Text="Синий текст (FontSize=16)" FontSize="16"/>
+            <TextBlock Text="Обычный текст (FontSize=14)" FontSize="14"/>
+            
+            <!-- 5.1.2 и 5.2.1 -->
+            <TextBlock Text="5.1.2 и 5.2.1 Кнопка (наведи для оранжевого)" FontWeight="Bold"/>
+            <Button Content="Обычная кнопка"/>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Window>

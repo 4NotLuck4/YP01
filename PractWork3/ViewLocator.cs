@@ -7,7 +7,7 @@ namespace PractWork3
 {
     public class ViewLocator : IDataTemplate
     {
-        public bool SupportsRecycling => false;
+        public static bool SupportsRecycling => false;
 
         public Control? Build(object? data)
         {
@@ -19,6 +19,12 @@ namespace PractWork3
 
             if (type != null)
             {
+                var view = App.Services?.GetService(type);
+                if (view is Control control)
+                {
+                    control.DataContext = data;
+                    return control;
+                }
                 return (Control)Activator.CreateInstance(type)!;
             }
 

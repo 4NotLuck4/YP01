@@ -8,7 +8,6 @@ namespace PractWork3.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }

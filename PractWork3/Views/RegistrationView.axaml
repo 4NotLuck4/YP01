@@ -8,9 +8,9 @@
 
     <StackPanel Spacing="10" Margin="20">
         <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold"/>
-        <TextBox Watermark="Логин"/>
-        <TextBox Watermark="Пароль" PasswordChar="*"/>
-        <TextBox Watermark="Email"/>
+        <TextBox PlaceholderText="Логин"/>
+        <TextBox PlaceholderText="Пароль" PasswordChar="*"/>
+        <TextBox PlaceholderText="Email"/>
         <Button Content="Зарегистрироваться" HorizontalAlignment="Center"/>
     </StackPanel>
 </UserControl>

@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,5 +26,8 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.6" />
   </ItemGroup>
 </Project>

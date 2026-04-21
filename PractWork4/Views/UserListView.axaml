@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:PractWork4.ViewModels"
+             x:DataType="viewmodels:UserListViewModel"
+             x:Class="PractWork4.Views.UserListView">
+
+    <DockPanel>
+		
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10">
+            <TextBox Text="{Binding NewLogin}" PlaceholderText="Login" Width="150"/>
+            <TextBox Text="{Binding NewPassword}" PlaceholderText="Password" Width="150"/>
+            <Button Content="Add" Command="{Binding AddUserCommand}"/>
+        </StackPanel>
+
+        <ListBox ItemsSource="{Binding Users}" DockPanel.Dock="Top" Height="200">
+            <ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal" Spacing="10">
+						<TextBlock Text="{Binding Login}" Width="100"/>
+						<TextBlock Text="{Binding Password}" Width="100"/>
+                        <Button Content="Delete"
+                                Command="{Binding $parent[UserControl].DataContext.DeleteUserCommand}"
+                                CommandParameter="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DataGrid ItemsSource="{Binding Users}"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserSortColumns="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
+				<DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+                <DataGridTemplateColumn>
+					<DataTemplate>
+						<Button Content="Delete"
+                                Command="{Binding $parent[UserControl].DataContext.DeleteUserCommand}"
+                                CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+</UserControl>
